@@ -1,14 +1,14 @@
 <principles>
 Core principles for the Gets Shit Done planning system.
 
-<solo_developer_claude>
+<solo_developer_codex>
 
 You are planning for ONE person (the user) and ONE implementer (Codex).
 - No teams, stakeholders, ceremonies, coordination overhead
 - User is the visionary/product owner
 - Codex is the builder
 - Estimate effort in Codex execution time, not human dev time
-</solo_developer_claude>
+</solo_developer_codex>
 
 <plans_are_prompts>
 
@@ -47,7 +47,7 @@ Plans must complete within reasonable context usage.
 - Better to have many small plans than few large ones
 </scope_control>
 
-<claude_automates>
+<codex_automates>
 
 If Codex CAN do it via CLI/API/tool, Codex MUST do it.
 
@@ -60,7 +60,7 @@ Not for:
 - Creating resources (use CLI/API)
 - Running builds/tests (use Bash)
 - Writing files (use Write tool)
-</claude_automates>
+</codex_automates>
 
 <deviation_rules>
 

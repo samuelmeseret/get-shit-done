@@ -71,14 +71,14 @@ Continue to spawn_agents.
 <step name="spawn_agents">
 Spawn 4 parallel Explore agents to analyze codebase.
 
-Use subagent with `` and `in background` for parallel execution.
+Use subagent spawning with background execution for parallel analysis.
 
 **Agent 1: Stack + Integrations (Technology Focus)**
 
 subagent parameters:
 ```
-subagent_type: "Explore"
-run_in_background: true
+type: "Explore"
+background: true
 task_description: "Analyze codebase technology stack and external integrations"
 ```
 
@@ -121,8 +121,8 @@ If something is not found, note "Not detected" for that category.
 
 subagent parameters:
 ```
-subagent_type: "Explore"
-run_in_background: true
+type: "Explore"
+background: true
 task_description: "Analyze codebase architecture patterns and directory structure"
 ```
 
@@ -164,8 +164,8 @@ If something is not clear, provide best-guess interpretation based on code struc
 
 subagent parameters:
 ```
-subagent_type: "Explore"
-run_in_background: true
+type: "Explore"
+background: true
 task_description: "Analyze coding conventions and test patterns"
 ```
 
@@ -208,8 +208,8 @@ Look at actual code files to infer conventions if config files are missing.
 
 subagent parameters:
 ```
-subagent_type: "Explore"
-run_in_background: true
+type: "Explore"
+background: true
 task_description: "Identify technical debt and areas of concern"
 ```
 
@@ -256,11 +256,11 @@ Continue to collect_results.
 <step name="collect_results">
 Wait for all 4 agents to complete.
 
-Use check agent status tool to collect results from each agent. Since agents were run with `in background`, retrieve their output.
+Use the agent status tool to collect results from each agent. Since agents were run in the background, retrieve their output.
 
 **Collection pattern:**
 
-For each agent, use check agent status tool to get the full exploration findings.
+For each agent, check the status and retrieve the full exploration findings.
 
 **Aggregate findings by document:**
 

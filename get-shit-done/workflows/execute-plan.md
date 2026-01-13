@@ -206,7 +206,7 @@ No segmentation benefit - execute entirely in main
 ```
 1. Run init_agent_tracking step first (see step below)
 
-2. Use subagent with :
+2. Spawn a subagent for plan execution:
 
    Prompt: "Execute plan at .planning/phases/{phase}-{plan}-PLAN.md
 
@@ -358,7 +358,7 @@ For Pattern A (fully autonomous) and Pattern C (decision-dependent), skip this s
 
    B. If routing = Subagent:
       ```
-      Spawn subagent with :
+      Spawn subagent for segment execution:
 
       Prompt: "Execute tasks [task numbers/names] from plan at [plan path].
 

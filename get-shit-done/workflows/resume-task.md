@@ -169,10 +169,9 @@ The agent will continue from where it left off...
 **Use subagent with resume parameter:**
 
 ```
-Task(
+spawn_subagent(
   description: "Resume interrupted agent",
   prompt: "Continue your previous work. You were executing [task_description].",
-  subagent_type: "general-purpose",
   resume: "[AGENT_ID]"
 )
 ```

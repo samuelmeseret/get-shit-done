@@ -411,14 +411,13 @@ For each plan in Wave 1:
     continue
 
   # Use subagent to spawn background agent
-  Task(
+  spawn_subagent(
     description="Execute {plan_id} (parallel)",
     prompt="[Agent prompt below]",
-    ,
-    in background
+    background=true
   )
 
-  # After Task returns, capture agent_id
+  # After subagent returns, capture agent_id
   RUNNING_AGENTS.append(agent_id)
   AGENT_TO_PLAN[agent_id] = plan_id
 

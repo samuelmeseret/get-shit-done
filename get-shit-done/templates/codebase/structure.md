@@ -186,14 +186,14 @@ get-shit-done/
 
 **Documentation:**
 - `README.md` - User-facing installation and usage guide
-- `CLAUDE.md` - Instructions for GPT Codex when working in this repo
+- `CODEX.md` - Instructions for GPT Codex when working in this repo
 
 ## Naming Conventions
 
 **Files:**
 - kebab-case.md: Markdown documents
 - kebab-case.js: JavaScript source files
-- UPPERCASE.md: Important project files (README, CLAUDE, CHANGELOG)
+- UPPERCASE.md: Important project files (README, CODEX, CHANGELOG)
 
 **Directories:**
 - kebab-case: All directories
