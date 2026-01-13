@@ -17,7 +17,7 @@ affects: [plan-fix, progress]
 # Tech tracking
 tech-stack:
   added: []
-  patterns: [workflow-delegation, phase-scoped-issues, AskUserQuestion-pattern]
+  patterns: [workflow-delegation, phase-scoped-issues, prompt user-pattern]
 
 key-files:
   created:
@@ -29,7 +29,7 @@ key-files:
 key-decisions:
   - "Phase-scoped issues (not global ISSUES.md) for UAT findings"
   - "UAT- prefix distinguishes from ISS- enhancement issues"
-  - "Workflow delegates via AskUserQuestion for all user interaction"
+  - "Workflow delegates via prompt user for all user interaction"
 
 patterns-established:
   - "Phase-scoped issue files: {phase}-{plan}-ISSUES.md alongside SUMMARY.md"
@@ -56,7 +56,7 @@ completed: 2026-01-08
 
 ## Accomplishments
 
-- Created verify-work workflow with GSD-compliant XML structure (terse step names, AskUserQuestion pattern)
+- Created verify-work workflow with GSD-compliant XML structure (terse step names, prompt user pattern)
 - Created UAT issues template for phase-scoped issue tracking
 - Refactored verify-work command to delegate to workflow (no inline logic)
 

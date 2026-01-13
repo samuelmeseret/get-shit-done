@@ -8,7 +8,7 @@ allowed-tools:
   - Write
   - Glob
   - Grep
-  - AskUserQuestion
+  - user_input
   - WebFetch
   - mcp__context7__*
 ---
@@ -16,17 +16,17 @@ allowed-tools:
 <objective>
 Create executable phase prompt with discovery, context injection, and task breakdown.
 
-Purpose: Break down roadmap phases into concrete, executable PLAN.md files that Claude can execute.
+Purpose: Break down roadmap phases into concrete, executable PLAN.md files that Codex can execute.
 Output: One or more PLAN.md files in the phase directory (.planning/phases/XX-name/{phase}-{plan}-PLAN.md)
 </objective>
 
 <execution_context>
-@~/.claude/get-shit-done/workflows/plan-phase.md
-@~/.claude/get-shit-done/templates/phase-prompt.md
-@~/.claude/get-shit-done/references/plan-format.md
-@~/.claude/get-shit-done/references/scope-estimation.md
-@~/.claude/get-shit-done/references/checkpoints.md
-@~/.claude/get-shit-done/references/tdd.md
+@~/.codex/get-shit-done/workflows/plan-phase.md
+@~/.codex/get-shit-done/templates/phase-prompt.md
+@~/.codex/get-shit-done/references/plan-format.md
+@~/.codex/get-shit-done/references/scope-estimation.md
+@~/.codex/get-shit-done/references/checkpoints.md
+@~/.codex/get-shit-done/references/tdd.md
 </execution_context>
 
 <context>
@@ -62,6 +62,6 @@ Check for `.planning/codebase/` and load relevant documents based on phase type.
 
 - One or more PLAN.md files created in .planning/phases/XX-name/
 - Each plan has: objective, execution_context, context, tasks, verification, success_criteria, output
-- Tasks are specific enough for Claude to execute
+- Tasks are specific enough for Codex to execute
 - User knows next steps (execute plan or review/adjust)
   </success_criteria>

@@ -1,7 +1,7 @@
 <purpose>
 Guide manual user acceptance testing of recently built features. Extract deliverables from SUMMARY.md, generate test checklist, guide user through each test, log issues to phase-scoped file.
 
-The USER performs all testing — Claude generates the checklist, guides the process, and captures issues.
+The USER performs all testing — Codex generates the checklist, guides the process, and captures issues.
 </purpose>
 
 <process>
@@ -81,7 +81,7 @@ Present this checklist to user.
 <step name="guide">
 **Guide user through each test:**
 
-For each test item, use AskUserQuestion:
+For each test item, use prompt user:
 - header: "[Feature name]"
 - question: "[Test description] - Did this work as expected?"
 - options:
@@ -93,7 +93,7 @@ For each test item, use AskUserQuestion:
 **If Pass:** Move to next test
 
 **If Fail or Partial:**
-Follow up with AskUserQuestion:
+Follow up with prompt user:
 - header: "Issue details"
 - question: "What went wrong?"
 - options:
@@ -123,7 +123,7 @@ For each failed/partial test, gather:
 If any issues found:
 
 1. Create `.planning/phases/XX-name/{phase}-{plan}-ISSUES.md` if doesn't exist
-2. Use template from `@~/.claude/get-shit-done/templates/uat-issues.md`
+2. Use template from `@~/.codex/get-shit-done/templates/uat-issues.md`
 3. Add each issue:
 
 ```markdown
@@ -172,7 +172,7 @@ If any issues found:
 <step name="offer">
 **Offer next actions based on results:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Next"
 - question: "What would you like to do?"
 - options (based on results):
@@ -194,7 +194,7 @@ If issues found:
 <success_criteria>
 - [ ] Test scope identified from SUMMARY.md
 - [ ] Checklist generated based on deliverables
-- [ ] User guided through each test via AskUserQuestion
+- [ ] User guided through each test via prompt user
 - [ ] All test results captured (pass/fail/partial/skip)
 - [ ] Any issues logged to phase-scoped ISSUES.md
 - [ ] Summary presented with verdict

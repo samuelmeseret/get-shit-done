@@ -5,7 +5,7 @@ allowed-tools:
   - Read
   - Bash
   - Write
-  - AskUserQuestion
+  - user_input
 ---
 
 <objective>
@@ -20,10 +20,10 @@ Creates `.planning/` with PROJECT.md and config.json.
 
 <execution_context>
 
-@~/.claude/get-shit-done/references/principles.md
-@~/.claude/get-shit-done/references/questioning.md
-@~/.claude/get-shit-done/templates/project.md
-@~/.claude/get-shit-done/templates/config.json
+@~/.codex/get-shit-done/references/principles.md
+@~/.codex/get-shit-done/references/questioning.md
+@~/.codex/get-shit-done/templates/project.md
+@~/.codex/get-shit-done/templates/config.json
 
 </execution_context>
 
@@ -69,7 +69,7 @@ Check the results from setup step:
 - If `CODE_FILES` is non-empty OR `HAS_PACKAGE` is "yes"
 - AND `HAS_CODEBASE_MAP` is NOT "yes"
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Existing Code"
 - question: "I detected existing code in this directory. Would you like to map the codebase first?"
 - options:
@@ -90,43 +90,43 @@ Exit command.
 
 <step name="question">
 
-**1. Open (FREEFORM — do NOT use AskUserQuestion):**
+**1. Open (FREEFORM — do NOT use prompt user):**
 
 Ask inline: "What do you want to build?"
 
 Wait for their freeform response. This gives you the context needed to ask intelligent follow-up questions.
 
-**2. Follow the thread (NOW use AskUserQuestion):**
+**2. Follow the thread (NOW use prompt user):**
 
-Based on their response, use AskUserQuestion with options that probe what they mentioned:
+Based on their response, use prompt user with options that probe what they mentioned:
 - header: "[Topic they mentioned]"
 - question: "You mentioned [X] — what would that look like?"
 - options: 2-3 interpretations + "Something else"
 
 **3. Sharpen the core:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Core"
 - question: "If you could only nail one thing, what would it be?"
 - options: Key aspects they've mentioned + "All equally important" + "Something else"
 
 **4. Find boundaries:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Scope"
 - question: "What's explicitly NOT in v1?"
 - options: Things that might be tempting + "Nothing specific" + "Let me list them"
 
 **5. Ground in reality:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Constraints"
 - question: "Any hard constraints?"
 - options: Relevant constraint types + "None" + "Yes, let me explain"
 
 **6. Decision gate:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Ready?"
 - question: "Ready to create PROJECT.md, or explore more?"
 - options (ALL THREE REQUIRED):
@@ -223,7 +223,7 @@ Do not compress. Capture everything gathered.
 
 Ask workflow mode preference:
 
-Use AskUserQuestion:
+Use prompt user:
 
 - header: "Mode"
 - question: "How do you want to work?"
@@ -237,7 +237,7 @@ Use AskUserQuestion:
 
 Ask planning depth preference:
 
-Use AskUserQuestion:
+Use prompt user:
 
 - header: "Depth"
 - question: "How thorough should planning be?"
@@ -254,7 +254,7 @@ Use AskUserQuestion:
 
 Ask parallel execution preference:
 
-Use AskUserQuestion:
+Use prompt user:
 
 - header: "Parallelization"
 - question: "Enable parallel phase execution?"
@@ -290,7 +290,7 @@ EOF
 
 <step name="done">
 
-Present completion with next steps (see ~/.claude/get-shit-done/references/continuation-format.md):
+Present completion with next steps (see ~/.codex/get-shit-done/references/continuation-format.md):
 
 ```
 Project initialized:

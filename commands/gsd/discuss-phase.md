@@ -13,8 +13,8 @@ Output: {phase}-CONTEXT.md capturing the user's vision for the phase
 </objective>
 
 <execution_context>
-@~/.claude/get-shit-done/workflows/discuss-phase.md
-@~/.claude/get-shit-done/templates/context.md
+@~/.codex/get-shit-done/workflows/discuss-phase.md
+@~/.codex/get-shit-done/templates/context.md
 </execution_context>
 
 <context>
@@ -31,17 +31,17 @@ Phase number: $ARGUMENTS (required)
 1. Validate phase number argument (error if missing or invalid)
 2. Check if phase exists in roadmap
 3. Check if CONTEXT.md already exists (offer to update if yes)
-4. Follow discuss-phase.md workflow with **ALL questions using AskUserQuestion**:
+4. Follow discuss-phase.md workflow with **ALL questions using prompt user**:
    - Present phase from roadmap
-   - Use AskUserQuestion: "How do you imagine this working?" with interpretation options
-   - Use AskUserQuestion to follow their thread — probe what excites them
-   - Use AskUserQuestion to sharpen the core — what's essential for THIS phase
-   - Use AskUserQuestion to find boundaries — what's explicitly out of scope
-   - Use AskUserQuestion for decision gate (ready / ask more / let me add context)
+   - Use prompt user: "How do you imagine this working?" with interpretation options
+   - Use prompt user to follow their thread — probe what excites them
+   - Use prompt user to sharpen the core — what's essential for THIS phase
+   - Use prompt user to find boundaries — what's explicitly out of scope
+   - Use prompt user for decision gate (ready / ask more / let me add context)
    - Create CONTEXT.md capturing their vision
 5. Offer next steps (research or plan the phase)
 
-**CRITICAL: ALL questions use AskUserQuestion. Never ask inline text questions.**
+**CRITICAL: ALL questions use prompt user. Never ask inline text questions.**
 
 User is the visionary, you are the builder:
 - Ask about vision, feel, essential outcomes

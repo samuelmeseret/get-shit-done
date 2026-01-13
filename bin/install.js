@@ -25,7 +25,7 @@ ${cyan}   ██████╗ ███████╗██████╗
 
   Get Shit Done ${dim}v${pkg.version}${reset}
   A meta-prompting, context engineering and spec-driven
-  development system for Claude Code by TÂCHES.
+  development system for GPT Codex by TÂCHES.
 `;
 
 // Parse args
@@ -59,31 +59,31 @@ console.log(banner);
 
 // Show help if requested
 if (hasHelp) {
-  console.log(`  ${yellow}Usage:${reset} npx get-shit-done-cc [options]
+  console.log(`  ${yellow}Usage:${reset} npx get-shit-done-codex [options]
 
   ${yellow}Options:${reset}
-    ${cyan}-g, --global${reset}              Install globally (to Claude config directory)
-    ${cyan}-l, --local${reset}               Install locally (to ./.claude in current directory)
-    ${cyan}-c, --config-dir <path>${reset}   Specify custom Claude config directory
+    ${cyan}-g, --global${reset}              Install globally (to Codex config directory)
+    ${cyan}-l, --local${reset}               Install locally (to ./.codex in current directory)
+    ${cyan}-c, --config-dir <path>${reset}   Specify custom Codex config directory
     ${cyan}-h, --help${reset}                Show this help message
 
   ${yellow}Examples:${reset}
-    ${dim}# Install to default ~/.claude directory${reset}
-    npx get-shit-done-cc --global
+    ${dim}# Install to default ~/.codex directory${reset}
+    npx get-shit-done-codex --global
 
-    ${dim}# Install to custom config directory (for multiple Claude accounts)${reset}
-    npx get-shit-done-cc --global --config-dir ~/.claude-bc
+    ${dim}# Install to custom config directory (for multiple Codex configs)${reset}
+    npx get-shit-done-codex --global --config-dir ~/.codex-work
 
     ${dim}# Using environment variable${reset}
-    CLAUDE_CONFIG_DIR=~/.claude-bc npx get-shit-done-cc --global
+    CODEX_CONFIG_DIR=~/.codex-work npx get-shit-done-codex --global
 
     ${dim}# Install to current project only${reset}
-    npx get-shit-done-cc --local
+    npx get-shit-done-codex --local
 
   ${yellow}Notes:${reset}
-    The --config-dir option is useful when you have multiple Claude Code
-    configurations (e.g., for different subscriptions). It takes priority
-    over the CLAUDE_CONFIG_DIR environment variable.
+    The --config-dir option is useful when you have multiple GPT Codex
+    configurations. It takes priority over the CODEX_CONFIG_DIR
+    environment variable.
 `);
   process.exit(0);
 }
@@ -113,9 +113,9 @@ function copyWithPathReplacement(srcDir, destDir, pathPrefix) {
     if (entry.isDirectory()) {
       copyWithPathReplacement(srcPath, destPath, pathPrefix);
     } else if (entry.name.endsWith('.md')) {
-      // Replace ~/.claude/ with the appropriate prefix in markdown files
+      // Replace ~/.codex/ with the appropriate prefix in markdown files
       let content = fs.readFileSync(srcPath, 'utf8');
-      content = content.replace(/~\/\.claude\//g, pathPrefix);
+      content = content.replace(/~\/\.codex\//g, pathPrefix);
       fs.writeFileSync(destPath, content);
     } else {
       fs.copyFileSync(srcPath, destPath);
@@ -128,27 +128,27 @@ function copyWithPathReplacement(srcDir, destDir, pathPrefix) {
  */
 function install(isGlobal) {
   const src = path.join(__dirname, '..');
-  // Priority: explicit --config-dir arg > CLAUDE_CONFIG_DIR env var > default ~/.claude
-  const configDir = expandTilde(explicitConfigDir) || expandTilde(process.env.CLAUDE_CONFIG_DIR);
-  const defaultGlobalDir = configDir || path.join(os.homedir(), '.claude');
-  const claudeDir = isGlobal
+  // Priority: explicit --config-dir arg > CODEX_CONFIG_DIR env var > default ~/.codex
+  const configDir = expandTilde(explicitConfigDir) || expandTilde(process.env.CODEX_CONFIG_DIR);
+  const defaultGlobalDir = configDir || path.join(os.homedir(), '.codex');
+  const codexDir = isGlobal
     ? defaultGlobalDir
-    : path.join(process.cwd(), '.claude');
+    : path.join(process.cwd(), '.codex');
 
   const locationLabel = isGlobal
-    ? claudeDir.replace(os.homedir(), '~')
-    : claudeDir.replace(process.cwd(), '.');
+    ? codexDir.replace(os.homedir(), '~')
+    : codexDir.replace(process.cwd(), '.');
 
   // Path prefix for file references
-  // Use actual path when CLAUDE_CONFIG_DIR is set, otherwise use ~ shorthand
+  // Use actual path when CODEX_CONFIG_DIR is set, otherwise use ~ shorthand
   const pathPrefix = isGlobal
-    ? (configDir ? `${claudeDir}/` : '~/.claude/')
-    : './.claude/';
+    ? (configDir ? `${codexDir}/` : '~/.codex/')
+    : './.codex/';
 
   console.log(`  Installing to ${cyan}${locationLabel}${reset}\n`);
 
   // Create commands directory
-  const commandsDir = path.join(claudeDir, 'commands');
+  const commandsDir = path.join(codexDir, 'commands');
   fs.mkdirSync(commandsDir, { recursive: true });
 
   // Copy commands/gsd with path replacement
@@ -159,12 +159,12 @@ function install(isGlobal) {
 
   // Copy get-shit-done skill with path replacement
   const skillSrc = path.join(src, 'get-shit-done');
-  const skillDest = path.join(claudeDir, 'get-shit-done');
+  const skillDest = path.join(codexDir, 'get-shit-done');
   copyWithPathReplacement(skillSrc, skillDest, pathPrefix);
   console.log(`  ${green}✓${reset} Installed get-shit-done`);
 
   console.log(`
-  ${green}Done!${reset} Launch Claude Code and run ${cyan}/gsd:help${reset}.
+  ${green}Done!${reset} Launch GPT Codex and run ${cyan}/gsd:help${reset}.
 `);
 }
 
@@ -177,14 +177,14 @@ function promptLocation() {
     output: process.stdout
   });
 
-  const configDir = expandTilde(explicitConfigDir) || expandTilde(process.env.CLAUDE_CONFIG_DIR);
-  const globalPath = configDir || path.join(os.homedir(), '.claude');
+  const configDir = expandTilde(explicitConfigDir) || expandTilde(process.env.CODEX_CONFIG_DIR);
+  const globalPath = configDir || path.join(os.homedir(), '.codex');
   const globalLabel = globalPath.replace(os.homedir(), '~');
 
   console.log(`  ${yellow}Where would you like to install?${reset}
 
   ${cyan}1${reset}) Global ${dim}(${globalLabel})${reset} - available in all projects
-  ${cyan}2${reset}) Local  ${dim}(./.claude)${reset} - this project only
+  ${cyan}2${reset}) Local  ${dim}(./.codex)${reset} - this project only
 `);
 
   rl.question(`  Choice ${dim}[1]${reset}: `, (answer) => {

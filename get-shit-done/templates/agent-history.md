@@ -42,7 +42,7 @@ Each entry tracks a subagent spawn or status change:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| agent_id | string | Unique ID returned by Task tool |
+| agent_id | string | Unique ID returned by subagent |
 | task_description | string | Brief description of what agent is executing |
 | phase | string | Phase number (e.g., "02", "02.1") |
 | plan | string | Plan number within phase |
@@ -70,7 +70,7 @@ queued ──> spawned ──────────────────> c
 ```
 
 - **queued**: Waiting for dependency (parallel execution only)
-- **spawned**: Agent created via Task tool, execution in progress
+- **spawned**: Agent created via subagent, execution in progress
 - **completed**: Agent finished successfully, results received
 - **interrupted**: Session ended before agent completed (detected on resume)
 - **resumed**: Previously interrupted agent resumed via resume parameter
@@ -86,10 +86,10 @@ Create `.planning/agent-history.json` from this template when:
 
 ### When to Add Entry
 
-Add new entry immediately after Task tool returns with agent_id:
+Add new entry immediately after subagent returns with agent_id:
 
 ```
-1. Task tool spawns subagent
+1. subagent spawns subagent
 2. Response includes agent_id
 3. Write agent_id to .planning/current-agent-id.txt
 4. Append entry to agent-history.json with status "spawned"
@@ -260,4 +260,4 @@ If files modified by another agent conflict with files this agent modifies, warn
 
 **Companion file:** `.planning/current-agent-id.txt` (single agent ID, overwritten on each spawn)
 
-**Purpose:** Enable resume capability for interrupted subagent executions via Task tool's resume parameter.
+**Purpose:** Enable resume capability for interrupted subagent executions via subagent's resume parameter.

@@ -137,7 +137,7 @@ grep -n "type=\"checkpoint" .planning/phases/XX-name/{phase}-{plan}-PLAN.md
 **If NO checkpoints found:**
 
 - **Fully autonomous plan** - spawn single subagent for entire plan
-- Subagent gets fresh 200k context, executes all tasks, creates SUMMARY, commits
+- Subagent gets fresh full context, executes all tasks, creates SUMMARY, commits
 - Main context: Just orchestration (~5% usage)
 
 **If checkpoints found, parse into segments:**
@@ -206,7 +206,7 @@ No segmentation benefit - execute entirely in main
 ```
 1. Run init_agent_tracking step first (see step below)
 
-2. Use Task tool with subagent_type="general-purpose":
+2. Spawn a subagent for plan execution:
 
    Prompt: "Execute plan at .planning/phases/{phase}-{plan}-PLAN.md
 
@@ -216,7 +216,7 @@ No segmentation benefit - execute entirely in main
 
    When complete, report: plan name, tasks completed, SUMMARY path, commit hash."
 
-3. After Task tool returns with agent_id:
+3. After subagent returns with agent_id:
 
    a. Write agent_id to current-agent-id.txt:
       echo "[agent_id]" > .planning/current-agent-id.txt
@@ -310,9 +310,9 @@ fi
 
 **If interrupted agent found:**
 - The agent ID file exists from a previous session that didn't complete
-- This agent can potentially be resumed using Task tool's `resume` parameter
+- This agent can potentially be resumed using subagent's `resume` parameter
 - Present to user: "Previous session was interrupted. Resume agent [ID] or start fresh?"
-- If resume: Use Task tool with `resume` parameter set to the interrupted ID
+- If resume: Use subagent with `resume` parameter set to the interrupted ID
 - If fresh: Clear the file and proceed normally
 
 **3. Prune old entries (housekeeping):**
@@ -358,7 +358,7 @@ For Pattern A (fully autonomous) and Pattern C (decision-dependent), skip this s
 
    B. If routing = Subagent:
       ```
-      Spawn Task tool with subagent_type="general-purpose":
+      Spawn subagent for segment execution:
 
       Prompt: "Execute tasks [task numbers/names] from plan at [plan path].
 
@@ -380,7 +380,7 @@ For Pattern A (fully autonomous) and Pattern C (decision-dependent), skip this s
       - Deviations encountered
       - Any issues or blockers"
 
-      **After Task tool returns with agent_id:**
+      **After subagent returns with agent_id:**
 
       1. Write agent_id to current-agent-id.txt:
          echo "[agent_id]" > .planning/current-agent-id.txt
@@ -529,7 +529,7 @@ ls .planning/phases/*/SUMMARY.md 2>/dev/null | sort -r | head -2 | tail -1
 
 If previous phase SUMMARY.md has "Issues Encountered" != "None" or "Next Phase Readiness" mentions blockers:
 
-Use AskUserQuestion:
+Use prompt user:
 
 - header: "Previous Issues"
 - question: "Previous phase had unresolved items: [summary]. How to proceed?"
@@ -829,7 +829,7 @@ Proceed with proposed change? (yes / different approach / defer)
 
 **Process:**
 
-1. Create .planning/ISSUES.md if doesn't exist (use `~/.claude/get-shit-done/templates/issues.md`)
+1. Create .planning/ISSUES.md if doesn't exist (use `~/.codex/get-shit-done/templates/issues.md`)
 2. Add entry with ISS-XXX number (auto-increment)
 3. Brief notification: `📋 Logged enhancement: [brief] (ISS-XXX)`
 4. Continue task without implementing
@@ -978,7 +978,7 @@ After TDD plan completion, ensure:
 - Standard plans: Multiple tasks, 1 commit per task, 2-4 commits total
 - TDD plans: Single feature, 2-3 commits for RED/GREEN/REFACTOR cycle
 
-See `~/.claude/get-shit-done/references/tdd.md` for TDD plan structure.
+See `~/.codex/get-shit-done/references/tdd.md` for TDD plan structure.
 </tdd_plan_execution>
 
 <task_commit>
@@ -1069,7 +1069,7 @@ TASK_COMMITS+=("Task ${TASK_NUM}: ${TASK_COMMIT}")
 - Each task independently revertable
 - Git bisect finds exact failing task
 - Git blame traces line to specific task context
-- Clear history for Claude in future sessions
+- Clear history for Codex in future sessions
 - Better observability for AI-automated workflow
 
 </task_commit>
@@ -1077,7 +1077,7 @@ TASK_COMMITS+=("Task ${TASK_NUM}: ${TASK_COMMIT}")
 <step name="checkpoint_protocol">
 When encountering `type="checkpoint:*"`:
 
-**Critical: Claude automates everything with CLI/API before checkpoints.** Checkpoints are for verification and decisions, not manual work.
+**Critical: Codex automates everything with CLI/API before checkpoints.** Checkpoints are for verification and decisions, not manual work.
 
 **Display checkpoint clearly:**
 
@@ -1129,7 +1129,7 @@ Options:
 **For checkpoint:human-action (1% - rare, only for truly unavoidable manual steps):**
 
 ```
-I automated: [what Claude already did via CLI/API]
+I automated: [what Codex already did via CLI/API]
 
 Need your help with: [the ONE thing with no CLI/API - email link, 2FA code]
 
@@ -1149,7 +1149,7 @@ I'll verify after: [verification]
 - If verification passes or N/A: continue to next task
 - If verification fails: inform user, wait for resolution
 
-See ~/.claude/get-shit-done/references/checkpoints.md for complete checkpoint guidance.
+See ~/.codex/get-shit-done/references/checkpoints.md for complete checkpoint guidance.
 </step>
 
 <step name="verification_failure_gate">
@@ -1198,7 +1198,7 @@ Pass timing data to SUMMARY.md creation.
 
 <step name="create_summary">
 Create `{phase}-{plan}-SUMMARY.md` as specified in the prompt's `<output>` section.
-Use ~/.claude/get-shit-done/templates/summary.md for structure.
+Use ~/.codex/get-shit-done/templates/summary.md for structure.
 
 **File location:** `.planning/phases/XX-name/{phase}-{plan}-SUMMARY.md`
 
@@ -1462,7 +1462,7 @@ lmn012o feat(08-02): create user registration endpoint
 
 Each task has its own commit, followed by one metadata commit documenting plan completion.
 
-For commit message conventions, see ~/.claude/get-shit-done/references/git-integration.md
+For commit message conventions, see ~/.codex/get-shit-done/references/git-integration.md
 </step>
 
 <step name="update_codebase_map">
@@ -1526,7 +1526,7 @@ fi
 Review these now?
 ```
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Phase Issues"
 - question: "[N] issues were logged during this phase. Review now?"
 - options:
@@ -1534,7 +1534,7 @@ Use AskUserQuestion:
   - "Continue" - Address later, proceed to next work
 
 **If "Review issues" selected:**
-- Invoke: `SlashCommand("/gsd:consider-issues")`
+- Invoke: `run command("/gsd:consider-issues")`
 - After consider-issues completes, return to offer_next
 
 **If "Continue" selected or no issues found:**

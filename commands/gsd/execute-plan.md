@@ -9,9 +9,9 @@ allowed-tools:
   - Bash
   - Glob
   - Grep
-  - Task
-  - AskUserQuestion
-  - SlashCommand
+  - shell
+  - user_input
+  - commands
 ---
 
 <objective>
@@ -28,10 +28,10 @@ Uses intelligent segmentation:
   </objective>
 
 <execution_context>
-@~/.claude/get-shit-done/workflows/execute-plan.md
-@~/.claude/get-shit-done/templates/summary.md
-@~/.claude/get-shit-done/references/checkpoints.md
-@~/.claude/get-shit-done/references/tdd.md
+@~/.codex/get-shit-done/workflows/execute-plan.md
+@~/.codex/get-shit-done/templates/summary.md
+@~/.codex/get-shit-done/references/checkpoints.md
+@~/.codex/get-shit-done/references/tdd.md
 </execution_context>
 
 <context>
@@ -114,7 +114,7 @@ After all tasks complete:
 
 **Always stage files individually.**
 
-See ~/.claude/get-shit-done/references/git-integration.md for full commit strategy.
+See ~/.codex/get-shit-done/references/git-integration.md for full commit strategy.
 </commit_rules>
 
 <success_criteria>

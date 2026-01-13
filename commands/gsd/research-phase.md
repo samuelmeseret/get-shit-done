@@ -16,7 +16,7 @@ allowed-tools:
 <objective>
 Comprehensive research on HOW to implement a phase before planning.
 
-This is for niche/complex domains where Claude's training data is sparse or outdated. Research discovers:
+This is for niche/complex domains where Codex's training data is sparse or outdated. Research discovers:
 - What libraries exist for this problem
 - What architecture patterns experts use
 - What the standard stack looks like
@@ -27,9 +27,9 @@ Output: RESEARCH.md with ecosystem knowledge that informs quality planning.
 </objective>
 
 <execution_context>
-@~/.claude/get-shit-done/workflows/research-phase.md
-@~/.claude/get-shit-done/templates/research.md
-@~/.claude/get-shit-done/references/research-pitfalls.md
+@~/.codex/get-shit-done/workflows/research-phase.md
+@~/.codex/get-shit-done/templates/research.md
+@~/.codex/get-shit-done/references/research-pitfalls.md
 </execution_context>
 
 <context>
@@ -74,7 +74,7 @@ Check for `.planning/phases/XX-name/{phase}-CONTEXT.md` - bonus context from dis
 - Standard web dev (auth, CRUD, REST APIs)
 - Well-known patterns (forms, validation, testing)
 - Simple integrations (Stripe, SendGrid with clear docs)
-- Commodity features Claude handles well
+- Commodity features Codex handles well
 </when_to_use>
 
 <success_criteria>

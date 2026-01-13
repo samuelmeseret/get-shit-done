@@ -7,8 +7,8 @@ allowed-tools:
   - Grep
   - Glob
   - Edit
-  - AskUserQuestion
-  - SlashCommand
+  - user_input
+  - commands
 ---
 
 <objective>
@@ -148,7 +148,7 @@ Based on analysis, present options:
 What would you like to do?
 ```
 
-Use AskUserQuestion with appropriate options based on findings:
+Use prompt user with appropriate options based on findings:
 
 **If resolved issues exist:**
 - "Close resolved issues" - Move to Closed Enhancements section

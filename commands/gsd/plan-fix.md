@@ -8,7 +8,7 @@ allowed-tools:
   - Write
   - Glob
   - Grep
-  - AskUserQuestion
+  - user_input
 ---
 
 <objective>
@@ -19,8 +19,8 @@ Output: {plan}-FIX.md in the phase directory, ready for execution.
 </objective>
 
 <execution_context>
-@~/.claude/get-shit-done/references/plan-format.md
-@~/.claude/get-shit-done/references/checkpoints.md
+@~/.codex/get-shit-done/references/plan-format.md
+@~/.codex/get-shit-done/references/checkpoints.md
 </execution_context>
 
 <context>
@@ -126,8 +126,8 @@ Priority: {critical count} critical, {major count} major, {minor count} minor
 </objective>
 
 <execution_context>
-@~/.claude/get-shit-done/workflows/execute-plan.md
-@~/.claude/get-shit-done/templates/summary.md
+@~/.codex/get-shit-done/workflows/execute-plan.md
+@~/.codex/get-shit-done/templates/summary.md
 </execution_context>
 
 <context>
@@ -191,7 +191,7 @@ Would you like to:
 ---
 ```
 
-Use AskUserQuestion to get response.
+Use prompt user to get response.
 If execute: `/gsd:execute-plan .planning/phases/XX-name/{plan}-FIX.md`
 </step>
 

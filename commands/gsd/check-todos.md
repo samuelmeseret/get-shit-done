@@ -7,7 +7,7 @@ allowed-tools:
   - Write
   - Bash
   - Glob
-  - AskUserQuestion
+  - user_input
 ---
 
 <objective>
@@ -122,7 +122,7 @@ If roadmap exists:
 <step name="offer_actions">
 **If todo maps to a roadmap phase:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Action"
 - question: "This todo relates to Phase [N]: [name]. What would you like to do?"
 - options:
@@ -133,7 +133,7 @@ Use AskUserQuestion:
 
 **If no roadmap match:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Action"
 - question: "What would you like to do with this todo?"
 - options:

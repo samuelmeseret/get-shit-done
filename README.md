@@ -2,17 +2,17 @@
 
 # GET SHIT DONE
 
-**A light-weight and powerful meta-prompting, context engineering and spec-driven development system for Claude Code by TÂCHES.**
+**A light-weight and powerful meta-prompting, context engineering and spec-driven development system for GPT Codex by TÂCHES.**
 
-[![npm version](https://img.shields.io/npm/v/get-shit-done-cc?style=for-the-badge&logo=npm&logoColor=white&color=CB3837)](https://www.npmjs.com/package/get-shit-done-cc)
-[![npm downloads](https://img.shields.io/npm/dm/get-shit-done-cc?style=for-the-badge&logo=npm&logoColor=white&color=CB3837)](https://www.npmjs.com/package/get-shit-done-cc)
+[![npm version](https://img.shields.io/npm/v/get-shit-done-codex?style=for-the-badge&logo=npm&logoColor=white&color=CB3837)](https://www.npmjs.com/package/get-shit-done-codex)
+[![npm downloads](https://img.shields.io/npm/dm/get-shit-done-codex?style=for-the-badge&logo=npm&logoColor=white&color=CB3837)](https://www.npmjs.com/package/get-shit-done-codex)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/glittercowboy/get-shit-done?style=for-the-badge&logo=github&color=181717)](https://github.com/glittercowboy/get-shit-done)
 
 <br>
 
 ```bash
-npx get-shit-done-cc
+npx get-shit-done-codex
 ```
 
 **Works on Mac, Windows, and Linux.**
@@ -27,7 +27,7 @@ npx get-shit-done-cc
 
 *"I've done SpecKit, OpenSpec and Taskmaster — this has produced the best results for me."*
 
-*"By far the most powerful addition to my Claude Code. Nothing over-engineered. Literally just gets shit done."*
+*"By far the most powerful addition to my GPT Codex. Nothing over-engineered. Literally just gets shit done."*
 
 <br>
 
@@ -41,15 +41,15 @@ npx get-shit-done-cc
 
 ## Why I Built This
 
-I'm a solo developer. I don't write code — Claude Code does.
+I'm a solo developer. I don't write code — GPT Codex does.
 
 Other spec-driven development tools exist; BMAD, Speckit... But they all seem to make things way more complicated than they need to be (sprint ceremonies, story points, stakeholder syncs, retrospectives, Jira workflows) or lack real big picture understanding of what you're building. I'm not a 50-person software company. I don't want to play enterprise theater. I'm just a creative person trying to build great things that work.
 
 So I built GSD. The complexity is in the system, not in your workflow. Behind the scenes: context engineering, XML prompt formatting, subagent orchestration, state management. What you see: a few commands that just work.
 
-The system gives Claude everything it needs to do the work *and* verify it. I trust the workflow. It just does a good job.
+The system gives Codex everything it needs to do the work *and* verify it. I trust the workflow. It just does a good job.
 
-That's what this is. No enterprise roleplay bullshit. Just an incredibly effective system for building cool stuff consistently using Claude Code.
+That's what this is. No enterprise roleplay bullshit. Just an incredibly effective system for building cool stuff consistently using GPT Codex.
 
 — **TÂCHES**
 
@@ -57,7 +57,7 @@ That's what this is. No enterprise roleplay bullshit. Just an incredibly effecti
 
 Vibecoding has a bad reputation. You describe what you want, AI generates code, and you get inconsistent garbage that falls apart at scale.
 
-GSD fixes that. It's the context engineering layer that makes Claude Code reliable. Describe your idea, let the system extract everything it needs to know, and let Claude Code get to work.
+GSD fixes that. It's the context engineering layer that makes GPT Codex reliable. Describe your idea, let the system extract everything it needs to know, and let GPT Codex get to work.
 
 ---
 
@@ -70,17 +70,17 @@ People who want to describe what they want and have it built correctly — witho
 ## Getting Started
 
 ```bash
-npx get-shit-done-cc
+npx get-shit-done-codex
 ```
 
-That's it. Verify with `/gsd:help` inside your Claude Code interface.
+That's it. Verify with `/gsd:help` inside your GPT Codex interface.
 
 <details>
 <summary><strong>Non-interactive Install (Docker, CI, Scripts)</strong></summary>
 
 ```bash
-npx get-shit-done-cc --global   # Install to ~/.claude/
-npx get-shit-done-cc --local    # Install to ./.claude/
+npx get-shit-done-codex --global   # Install to ~/.codex/
+npx get-shit-done-codex --local    # Install to ./.codex/
 ```
 
 Use `--global` (`-g`) or `--local` (`-l`) to skip the interactive prompt.
@@ -98,16 +98,16 @@ cd get-shit-done
 node bin/install.js --local
 ```
 
-Installs to `./.claude/` for testing modifications before contributing.
+Installs to `./.codex/` for testing modifications before contributing.
 
 </details>
 
-### Recommended: Skip Permissions Mode
+### Recommended: Full Autonomy Mode
 
-GSD is designed for frictionless automation. Run Claude Code with:
+GSD is designed for frictionless automation. Run GPT Codex with full autonomy enabled:
 
 ```bash
-claude --dangerously-skip-permissions
+codex --full-auto
 ```
 
 > [!TIP]
@@ -116,33 +116,7 @@ claude --dangerously-skip-permissions
 <details>
 <summary><strong>Alternative: Granular Permissions</strong></summary>
 
-If you prefer not to use that flag, add this to your project's `.claude/settings.json`:
-
-```json
-{
-  "permissions": {
-    "allow": [
-      "Bash(date:*)",
-      "Bash(echo:*)",
-      "Bash(cat:*)",
-      "Bash(ls:*)",
-      "Bash(mkdir:*)",
-      "Bash(wc:*)",
-      "Bash(head:*)",
-      "Bash(tail:*)",
-      "Bash(sort:*)",
-      "Bash(grep:*)",
-      "Bash(tr:*)",
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git status:*)",
-      "Bash(git log:*)",
-      "Bash(git diff:*)",
-      "Bash(git tag:*)"
-    ]
-  }
-}
-```
+If you prefer not to use full autonomy mode, configure permissions in your GPT Codex settings.
 
 </details>
 
@@ -175,7 +149,7 @@ Produces:
 /gsd:execute-plan      # Subagent implements autonomously
 ```
 
-Each phase breaks into 2-3 atomic tasks. Each task runs in a fresh subagent context — 200k tokens purely for implementation, zero degradation.
+Each phase breaks into 2-3 atomic tasks. Each task runs in a fresh subagent context — maximum tokens purely for implementation, zero degradation.
 
 **For multi-plan phases:**
 ```
@@ -230,7 +204,7 @@ Same as greenfield, but the system knows your codebase. Questions focus on what 
 
 From here, it's the same: `/gsd:create-roadmap` → `/gsd:plan-phase` → `/gsd:execute-plan`
 
-The codebase docs load automatically during planning. Claude knows your patterns, conventions, and where to put things.
+The codebase docs load automatically during planning. Codex knows your patterns, conventions, and where to put things.
 
 ---
 
@@ -238,7 +212,7 @@ The codebase docs load automatically during planning. Claude knows your patterns
 
 ### Context Engineering
 
-Claude Code is incredibly powerful *if* you give it the context it needs. Most people don't.
+GPT Codex is incredibly powerful *if* you give it the context it needs. Most people don't.
 
 GSD handles it for you:
 
@@ -252,11 +226,11 @@ GSD handles it for you:
 | `ISSUES.md` | Deferred enhancements tracked across sessions |
 | `todos/` | Captured ideas and tasks for later work |
 
-Size limits based on where Claude's quality degrades. Stay under, get consistent excellence.
+Size limits based on where Codex's quality degrades. Stay under, get consistent excellence.
 
 ### XML Prompt Formatting
 
-Every plan is structured XML optimized for Claude:
+Every plan is structured XML optimized for Codex:
 
 ```xml
 <task type="auto">
@@ -276,9 +250,9 @@ Precise instructions. No guessing. Verification built in.
 
 ### Subagent Execution
 
-As Claude fills its context window, quality degrades. You've seen it: *"Due to context limits, I'll be more concise now."* That "concision" is code for cutting corners.
+As Codex fills its context window, quality degrades. You've seen it: *"Due to context limits, I'll be more concise now."* That "concision" is code for cutting corners.
 
-GSD prevents this. Each plan is maximum 3 tasks. Each plan runs in a fresh subagent — 200k tokens purely for implementation, zero accumulated garbage.
+GSD prevents this. Each plan is maximum 3 tasks. Each plan runs in a fresh subagent — maximum tokens purely for implementation, zero accumulated garbage.
 
 | Task | Context | Quality |
 |------|---------|---------|
@@ -300,7 +274,7 @@ lmn012o feat(08-02): create registration endpoint
 ```
 
 > [!NOTE]
-> **Benefits:** Git bisect finds exact failing task. Each task independently revertable. Clear history for Claude in future sessions. Better observability in AI-automated workflow.
+> **Benefits:** Git bisect finds exact failing task. Each task independently revertable. Clear history for Codex in future sessions. Better observability in AI-automated workflow.
 
 Every commit is surgical, traceable, and meaningful.
 
@@ -337,7 +311,7 @@ You're never locked in. The system adapts.
 | `/gsd:remove-phase [N]` | Remove future phase, renumber subsequent |
 | `/gsd:discuss-phase [N]` | Gather context before planning |
 | `/gsd:research-phase [N]` | Deep ecosystem research for niche domains |
-| `/gsd:list-phase-assumptions [N]` | See what Claude thinks before you correct it |
+| `/gsd:list-phase-assumptions [N]` | See what Codex thinks before you correct it |
 | `/gsd:pause-work` | Create handoff file when stopping mid-phase |
 | `/gsd:resume-work` | Restore from last session |
 | `/gsd:resume-task [id]` | Resume interrupted subagent execution |
@@ -354,23 +328,23 @@ You're never locked in. The system adapts.
 ## Troubleshooting
 
 **Commands not found after install?**
-- Restart Claude Code to reload slash commands
-- Verify files exist in `~/.claude/commands/gsd/` (global) or `./.claude/commands/gsd/` (local)
+- Restart GPT Codex to reload slash commands
+- Verify files exist in `~/.codex/commands/gsd/` (global) or `./.codex/commands/gsd/` (local)
 
 **Commands not working as expected?**
 - Run `/gsd:help` to verify installation
-- Re-run `npx get-shit-done-cc` to reinstall
+- Re-run `npx get-shit-done-codex` to reinstall
 
 **Updating to the latest version?**
 ```bash
-npx get-shit-done-cc@latest
+npx get-shit-done-codex@latest
 ```
 
 **Using Docker or containerized environments?**
 
-If file reads fail with tilde paths (`~/.claude/...`), set `CLAUDE_CONFIG_DIR` before installing:
+If file reads fail with tilde paths (`~/.codex/...`), set `CODEX_CONFIG_DIR` before installing:
 ```bash
-CLAUDE_CONFIG_DIR=/home/youruser/.claude npx get-shit-done-cc --global
+CODEX_CONFIG_DIR=/home/youruser/.codex npx get-shit-done-codex --global
 ```
 This ensures absolute paths are used instead of `~` which may not expand correctly in containers.
 
@@ -396,6 +370,6 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 <div align="center">
 
-**Claude Code is powerful. GSD makes it reliable.**
+**GPT Codex is powerful. GSD makes it reliable.**
 
 </div>

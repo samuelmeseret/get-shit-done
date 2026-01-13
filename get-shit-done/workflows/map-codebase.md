@@ -15,7 +15,7 @@ Each agent has fresh context and focuses on specific aspects. Output is concise 
 Include enough detail to be useful as reference. Prioritize practical examples (especially code patterns) over arbitrary brevity. A 200-line TESTING.md with real patterns is more valuable than a 74-line summary.
 
 **Always include file paths:**
-Documents are reference material for Claude when planning/executing. Vague descriptions like "UserService handles users" are not actionable. Always include actual file paths formatted with backticks: `src/services/user.ts`. This allows Claude to navigate directly to relevant code without re-searching. Do NOT include line numbers (they go stale), just file paths.
+Documents are reference material for Codex when planning/executing. Vague descriptions like "UserService handles users" are not actionable. Always include actual file paths formatted with backticks: `src/services/user.ts`. This allows Codex to navigate directly to relevant code without re-searching. Do NOT include line numbers (they go stale), just file paths.
 </philosophy>
 
 <process>
@@ -71,14 +71,14 @@ Continue to spawn_agents.
 <step name="spawn_agents">
 Spawn 4 parallel Explore agents to analyze codebase.
 
-Use Task tool with `subagent_type="Explore"` and `run_in_background=true` for parallel execution.
+Use subagent spawning with background execution for parallel analysis.
 
 **Agent 1: Stack + Integrations (Technology Focus)**
 
-Task tool parameters:
+subagent parameters:
 ```
-subagent_type: "Explore"
-run_in_background: true
+type: "Explore"
+background: true
 task_description: "Analyze codebase technology stack and external integrations"
 ```
 
@@ -119,10 +119,10 @@ If something is not found, note "Not detected" for that category.
 
 **Agent 2: Architecture + Structure (Organization Focus)**
 
-Task tool parameters:
+subagent parameters:
 ```
-subagent_type: "Explore"
-run_in_background: true
+type: "Explore"
+background: true
 task_description: "Analyze codebase architecture patterns and directory structure"
 ```
 
@@ -162,10 +162,10 @@ If something is not clear, provide best-guess interpretation based on code struc
 
 **Agent 3: Conventions + Testing (Quality Focus)**
 
-Task tool parameters:
+subagent parameters:
 ```
-subagent_type: "Explore"
-run_in_background: true
+type: "Explore"
+background: true
 task_description: "Analyze coding conventions and test patterns"
 ```
 
@@ -206,10 +206,10 @@ Look at actual code files to infer conventions if config files are missing.
 
 **Agent 4: Concerns (Issues Focus)**
 
-Task tool parameters:
+subagent parameters:
 ```
-subagent_type: "Explore"
-run_in_background: true
+type: "Explore"
+background: true
 task_description: "Identify technical debt and areas of concern"
 ```
 
@@ -256,11 +256,11 @@ Continue to collect_results.
 <step name="collect_results">
 Wait for all 4 agents to complete.
 
-Use TaskOutput tool to collect results from each agent. Since agents were run with `run_in_background=true`, retrieve their output.
+Use the agent status tool to collect results from each agent. Since agents were run in the background, retrieve their output.
 
 **Collection pattern:**
 
-For each agent, use TaskOutput tool to get the full exploration findings.
+For each agent, check the status and retrieve the full exploration findings.
 
 **Aggregate findings by document:**
 
@@ -296,7 +296,7 @@ Write all 7 codebase documents using templates and agent findings.
 
 For each document:
 
-1. **Read template file** from `~/.claude/get-shit-done/templates/codebase/{name}.md`
+1. **Read template file** from `~/.codex/get-shit-done/templates/codebase/{name}.md`
 2. **Extract the "File Template" section** - this is the markdown code block containing the actual document structure
 3. **Fill template placeholders** with agent findings:
    - Replace `[YYYY-MM-DD]` with current date
@@ -424,9 +424,9 @@ End workflow.
 
 <success_criteria>
 - .planning/codebase/ directory created
-- 4 parallel Explore agents spawned with run_in_background=true
+- 4 parallel Explore agents spawned with in background
 - Agent prompts are specific and actionable
-- TaskOutput used to collect all agent results
+- check agent status used to collect all agent results
 - All 7 codebase documents written using template filling
 - Documents follow template structure with actual findings
 - Clear completion summary with line counts

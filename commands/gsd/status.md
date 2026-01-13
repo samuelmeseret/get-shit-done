@@ -6,14 +6,14 @@ allowed-tools:
   - Read
   - Write
   - Bash
-  - TaskOutput
+  - shell
 ---
 
 <objective>
 Monitor background agent status from /gsd:execute-phase parallel execution.
 
 Shows running/completed agents from agent-history.json.
-Uses TaskOutput to check status of background tasks.
+Uses check agent status to check status of background tasks.
 With --wait flag, blocks until all agents complete.
 </objective>
 
@@ -54,22 +54,22 @@ Group by `parallel_group` if present.
 
 For each agent with `status === "spawned"`:
 
-Use TaskOutput tool:
+Use check agent status tool:
 ```
 task_id: [agent_id]
 block: false
 timeout: 1000
 ```
 
-**If TaskOutput returns completed result:**
+**If check agent status returns completed result:**
 - Update agent-history.json: status → "completed"
 - Set completion_timestamp
 - Parse files_modified from output if present
 
-**If TaskOutput returns "still running":**
+**If check agent status returns "still running":**
 - Keep as spawned (running)
 
-**If TaskOutput returns error:**
+**If check agent status returns error:**
 - Update agent-history.json: status → "failed"
 </step>
 
@@ -104,7 +104,7 @@ Wait for all: /gsd:status --wait
 
 For each agent with status "spawned":
 
-Use TaskOutput with blocking:
+Use check agent status with blocking:
 ```
 task_id: [agent_id]
 block: true
@@ -153,7 +153,7 @@ All parallel agents finished. Review results:
 
 <success_criteria>
 - [ ] Reads agent-history.json for background agents
-- [ ] Uses TaskOutput to check running agent status
+- [ ] Uses check agent status to check running agent status
 - [ ] Updates history with current status
 - [ ] Shows simple status table
 - [ ] --wait flag blocks until all complete

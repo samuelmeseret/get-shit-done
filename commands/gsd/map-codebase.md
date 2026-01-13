@@ -8,7 +8,7 @@ allowed-tools:
   - Glob
   - Grep
   - Write
-  - Task
+  - shell
 ---
 
 <objective>
@@ -20,14 +20,14 @@ Output: .planning/codebase/ folder with 7 structured documents about the codebas
 </objective>
 
 <execution_context>
-@~/.claude/get-shit-done/workflows/map-codebase.md
-@~/.claude/get-shit-done/templates/codebase/stack.md
-@~/.claude/get-shit-done/templates/codebase/architecture.md
-@~/.claude/get-shit-done/templates/codebase/structure.md
-@~/.claude/get-shit-done/templates/codebase/conventions.md
-@~/.claude/get-shit-done/templates/codebase/testing.md
-@~/.claude/get-shit-done/templates/codebase/integrations.md
-@~/.claude/get-shit-done/templates/codebase/concerns.md
+@~/.codex/get-shit-done/workflows/map-codebase.md
+@~/.codex/get-shit-done/templates/codebase/stack.md
+@~/.codex/get-shit-done/templates/codebase/architecture.md
+@~/.codex/get-shit-done/templates/codebase/structure.md
+@~/.codex/get-shit-done/templates/codebase/conventions.md
+@~/.codex/get-shit-done/templates/codebase/testing.md
+@~/.codex/get-shit-done/templates/codebase/integrations.md
+@~/.codex/get-shit-done/templates/codebase/concerns.md
 </execution_context>
 
 <context>

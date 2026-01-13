@@ -5,7 +5,7 @@ allowed-tools:
   - Read
   - Write
   - Bash
-  - AskUserQuestion
+  - user_input
   - Glob
 ---
 
@@ -16,9 +16,9 @@ Roadmaps define what work happens in what order. Run after /gsd:new-project.
 </objective>
 
 <execution_context>
-@~/.claude/get-shit-done/workflows/create-roadmap.md
-@~/.claude/get-shit-done/templates/roadmap.md
-@~/.claude/get-shit-done/templates/state.md
+@~/.codex/get-shit-done/workflows/create-roadmap.md
+@~/.codex/get-shit-done/templates/roadmap.md
+@~/.codex/get-shit-done/templates/state.md
 </execution_context>
 
 <context>
@@ -43,7 +43,7 @@ Check if roadmap already exists:
 ```
 
 **If ROADMAP_EXISTS:**
-Use AskUserQuestion:
+Use prompt user:
 - header: "Roadmap exists"
 - question: "A roadmap already exists. What would you like to do?"
 - options:
