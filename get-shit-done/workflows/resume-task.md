@@ -6,7 +6,7 @@ Use this workflow when:
 </trigger>
 
 <purpose>
-Resume an interrupted subagent execution using the Task tool's resume parameter.
+Resume an interrupted subagent execution using the subagent's resume parameter.
 
 Enables seamless continuation of autonomous work that was interrupted by session timeout, user exit, or crash.
 </purpose>
@@ -113,7 +113,7 @@ git status --short
 
 **If modifications detected:**
 
-Use AskUserQuestion to warn user:
+Use prompt user to warn user:
 
 ```
 Files modified since agent was interrupted:
@@ -156,7 +156,7 @@ This provides audit trail of the interruption before resume.
 </step>
 
 <step name="resume_agent">
-Resume the agent using Task tool's resume parameter:
+Resume the agent using subagent's resume parameter:
 
 ```
 Resuming agent: [agent_id]
@@ -166,7 +166,7 @@ Phase: [phase]-[plan]
 The agent will continue from where it left off...
 ```
 
-**Use Task tool with resume parameter:**
+**Use subagent with resume parameter:**
 
 ```
 Task(
@@ -227,7 +227,7 @@ The agent's work has been incorporated. Check git status for changes.
 <step name="handle_errors">
 Error handling for resume failures:
 
-**If Task tool returns error on resume:**
+**If subagent returns error on resume:**
 ```
 Failed to resume agent.
 
@@ -252,7 +252,7 @@ Do NOT clear current-agent-id.txt on error - allow retry.
 
 <success_criteria>
 Resume is complete when:
-- [ ] Agent resumed successfully via Task tool resume parameter
+- [ ] Agent resumed successfully via subagent resume parameter
 - [ ] Agent-history.json updated with completion status
 - [ ] Current-agent-id.txt cleared
 - [ ] User informed of completion

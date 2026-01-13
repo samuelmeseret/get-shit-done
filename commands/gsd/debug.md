@@ -9,7 +9,7 @@ allowed-tools:
   - Bash
   - Grep
   - Glob
-  - AskUserQuestion
+  - user_input
 ---
 
 <objective>
@@ -20,8 +20,8 @@ If starting new: gather symptoms, then investigate autonomously.
 </objective>
 
 <execution_context>
-@~/.claude/get-shit-done/workflows/debug.md
-@~/.claude/get-shit-done/templates/DEBUG.md
+@~/.codex/get-shit-done/workflows/debug.md
+@~/.codex/get-shit-done/templates/DEBUG.md
 </execution_context>
 
 <context>
@@ -34,7 +34,7 @@ ls .planning/debug/*.md 2>/dev/null | head -5
 </context>
 
 <process>
-Follow the workflow in @~/.claude/get-shit-done/workflows/debug.md
+Follow the workflow in @~/.codex/get-shit-done/workflows/debug.md
 
 **Quick reference:**
 
@@ -50,7 +50,7 @@ Follow the workflow in @~/.claude/get-shit-done/workflows/debug.md
 
 <success_criteria>
 - [ ] Active sessions checked before starting new
-- [ ] Symptoms gathered through AskUserQuestion (not inline questions)
+- [ ] Symptoms gathered through prompt user (not inline questions)
 - [ ] DEBUG.md tracks all investigation state
 - [ ] Scientific method followed (not random fixes)
 - [ ] Root cause confirmed with evidence before fixing

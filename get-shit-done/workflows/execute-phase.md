@@ -2,7 +2,7 @@
 Execute all plans in a phase with intelligent parallelization.
 Analyzes plan dependencies to identify independent plans that can run in parallel.
 
-**Critical constraint:** One subagent per plan, always. This is for context isolation, not parallelization. Even strictly sequential plans spawn separate subagents so each starts with fresh 200k context at 0%. Quality degrades above 50% context - executing multiple plans in one subagent defeats the entire segmentation model.
+**Critical constraint:** One subagent per plan, always. This is for context isolation, not parallelization. Even strictly sequential plans spawn separate subagents so each starts with fresh full context at 0%. Quality degrades above 50% context - executing multiple plans in one subagent defeats the entire segmentation model.
 </purpose>
 
 <when_to_use>
@@ -410,12 +410,12 @@ For each plan in Wave 1:
     QUEUED_PLANS.append(plan)
     continue
 
-  # Use Task tool to spawn background agent
+  # Use subagent to spawn background agent
   Task(
     description="Execute {plan_id} (parallel)",
     prompt="[Agent prompt below]",
-    subagent_type="general-purpose",
-    run_in_background=true
+    ,
+    in background
   )
 
   # After Task returns, capture agent_id
@@ -543,8 +543,8 @@ while [ ${#RUNNING_AGENTS[@]} -gt 0 ] || [ ${#QUEUED_PLANS[@]} -gt 0 ]; do
   # Check each running agent
   for agent_id in "${RUNNING_AGENTS[@]}"; do
 
-    # Use TaskOutput to check status (non-blocking)
-    TaskOutput(
+    # Use check agent status to check status (non-blocking)
+    check agent status(
       task_id=agent_id,
       block=false,
       timeout=5000

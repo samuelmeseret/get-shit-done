@@ -26,10 +26,10 @@ Output: [What artifacts will be created]
 </objective>
 
 <execution_context>
-~/.claude/get-shit-done/workflows/execute-plan.md
+~/.codex/get-shit-done/workflows/execute-plan.md
 ./summary.md
 [If plan contains checkpoint tasks (type="checkpoint:*"), add:]
-~/.claude/get-shit-done/references/checkpoints.md
+~/.codex/get-shit-done/references/checkpoints.md
 </execution_context>
 
 <context>
@@ -86,7 +86,7 @@ Output: [What artifacts will be created]
 </task>
 
 <task type="checkpoint:human-verify" gate="blocking">
-  <what-built>[What Claude just built that needs verification]</what-built>
+  <what-built>[What Codex just built that needs verification]</what-built>
   <how-to-verify>
     1. Run: [command to start dev server/app]
     2. Visit: [URL to check]
@@ -150,7 +150,7 @@ After completion, create `.planning/phases/XX-name/{phase}-{plan}-SUMMARY.md`:
 <key_elements>
 From create-meta-prompts patterns:
 
-- XML structure for Claude parsing
+- XML structure for Codex parsing
 - @context references for file loading
 - Task types: auto, checkpoint:human-action, checkpoint:human-verify, checkpoint:decision
 - Action includes "what to avoid and WHY" (from intelligence-rules)
@@ -184,7 +184,7 @@ TDD requires 2-3 execution cycles (RED → GREEN → REFACTOR) that consume 40-5
 → Yes: Create a TDD plan (one feature per plan)
 → No: Standard task in standard plan
 
-See `~/.claude/get-shit-done/references/tdd.md` for TDD plan structure.
+See `~/.codex/get-shit-done/references/tdd.md` for TDD plan structure.
 </tdd_plan_note>
 
 <good_examples>
@@ -234,7 +234,7 @@ Output: Working Next.js app with JWT auth, protected routes, and user model.
 </objective>
 
 <execution_context>
-~/.claude/get-shit-done/workflows/execute-plan.md
+~/.codex/get-shit-done/workflows/execute-plan.md
 ./summary.md
 </execution_context>
 
@@ -363,7 +363,7 @@ This is useless. No XML structure, no @context, no verification, no specificity.
 **When to use:**
 - Creating execution plans for each phase
 - One plan per 2-3 tasks, multiple plans per phase if needed
-- Always use XML structure for Claude parsing
+- Always use XML structure for Codex parsing
 
 **Task types:**
 

@@ -5,7 +5,7 @@ You are the debugger. The user knows what's wrong (behavior), not why (root caus
 </purpose>
 
 <philosophy>
-**User = reporter. Claude = investigator.**
+**User = reporter. Codex = investigator.**
 
 The user knows:
 - What they expected to happen
@@ -22,15 +22,15 @@ Ask about experience. Investigate the cause yourself.
 </philosophy>
 
 <references>
-@~/.claude/get-shit-done/references/debugging/debugging-mindset.md
-@~/.claude/get-shit-done/references/debugging/hypothesis-testing.md
-@~/.claude/get-shit-done/references/debugging/investigation-techniques.md
-@~/.claude/get-shit-done/references/debugging/verification-patterns.md
-@~/.claude/get-shit-done/references/debugging/when-to-research.md
+@~/.codex/get-shit-done/references/debugging/debugging-mindset.md
+@~/.codex/get-shit-done/references/debugging/hypothesis-testing.md
+@~/.codex/get-shit-done/references/debugging/investigation-techniques.md
+@~/.codex/get-shit-done/references/debugging/verification-patterns.md
+@~/.codex/get-shit-done/references/debugging/when-to-research.md
 </references>
 
 <template>
-@~/.claude/get-shit-done/templates/DEBUG.md
+@~/.codex/get-shit-done/templates/DEBUG.md
 </template>
 
 <process>
@@ -146,7 +146,7 @@ CRITICAL: Update the debug file after each piece of information gathered.
 
 **1. Expected behavior:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Expected"
 - question: "What should happen?"
 - options: Contextual interpretations + "Let me describe"
@@ -155,7 +155,7 @@ After answer → Update Symptoms.expected in debug file
 
 **2. Actual behavior:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Actual"
 - question: "What actually happens instead?"
 - options: Common failure modes + "Let me describe"
@@ -164,7 +164,7 @@ After answer → Update Symptoms.actual in debug file
 
 **3. Error messages:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Errors"
 - question: "Any error messages?"
 - options:
@@ -177,7 +177,7 @@ After answer → Update Symptoms.errors in debug file
 
 **4. When it started:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Timeline"
 - question: "When did this start?"
 - options:
@@ -190,7 +190,7 @@ After answer → Update Symptoms.started in debug file
 
 **5. Reproduction:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Reproduce"
 - question: "How do you trigger this?"
 - options:
@@ -203,7 +203,7 @@ After answer → Update Symptoms.reproduction in debug file
 
 **6. Ready check:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Ready?"
 - question: "Enough context to investigate?"
 - options:
@@ -387,7 +387,7 @@ Files: [files_changed]
 Session archived: .planning/debug/resolved/[slug].md
 ```
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Next"
 - question: "What now?"
 - options:

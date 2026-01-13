@@ -9,20 +9,20 @@ allowed-tools:
   - Grep
   - Edit
   - Write
-  - AskUserQuestion
+  - user_input
 ---
 
 <objective>
 Guide the user through manual acceptance testing of recently built features.
 
-Purpose: Validate that what Claude thinks was built actually works from the user's perspective. The USER performs all testing — Claude generates the test checklist, guides the process, and captures issues.
+Purpose: Validate that what Codex thinks was built actually works from the user's perspective. The USER performs all testing — Codex generates the test checklist, guides the process, and captures issues.
 
 Output: Validation of features, any issues logged to phase-scoped ISSUES.md
 </objective>
 
 <execution_context>
-@~/.claude/get-shit-done/workflows/verify-work.md
-@~/.claude/get-shit-done/templates/uat-issues.md
+@~/.codex/get-shit-done/workflows/verify-work.md
+@~/.codex/get-shit-done/templates/uat-issues.md
 </execution_context>
 
 <context>
@@ -43,7 +43,7 @@ Scope: $ARGUMENTS (optional)
 3. Follow verify-work.md workflow:
    - Extract testable deliverables
    - Generate test checklist
-   - Guide through each test via AskUserQuestion
+   - Guide through each test via prompt user
    - Collect and categorize issues
    - Log issues to `.planning/phases/XX-name/{phase}-{plan}-ISSUES.md`
    - Present summary with verdict

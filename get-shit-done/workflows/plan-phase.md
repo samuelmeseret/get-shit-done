@@ -15,11 +15,11 @@ Decimal phases enable urgent work insertion without renumbering:
 <required_reading>
 **Read these files NOW:**
 
-1. ~/.claude/get-shit-done/templates/phase-prompt.md
-2. ~/.claude/get-shit-done/references/plan-format.md
-3. ~/.claude/get-shit-done/references/scope-estimation.md
-4. ~/.claude/get-shit-done/references/checkpoints.md
-5. ~/.claude/get-shit-done/references/tdd.md
+1. ~/.codex/get-shit-done/templates/phase-prompt.md
+2. ~/.codex/get-shit-done/references/plan-format.md
+3. ~/.codex/get-shit-done/references/scope-estimation.md
+4. ~/.codex/get-shit-done/references/checkpoints.md
+5. ~/.codex/get-shit-done/references/tdd.md
 6. .planning/ROADMAP.md
 7. .planning/PROJECT.md
 
@@ -30,7 +30,7 @@ Decimal phases enable urgent work insertion without renumbering:
 </required_reading>
 
 <purpose>
-Create an executable phase prompt (PLAN.md). PLAN.md IS the prompt that Claude executes - not a document that gets transformed.
+Create an executable phase prompt (PLAN.md). PLAN.md IS the prompt that Codex executes - not a document that gets transformed.
 </purpose>
 
 <planning_principles>
@@ -290,13 +290,13 @@ Standard tasks (remain in standard plans):
 
 **Test framework:** If project has no test setup and TDD plans are needed, the first TDD plan's RED phase handles framework setup as part of writing the first test.
 
-See `~/.claude/get-shit-done/references/tdd.md` for TDD plan structure.
+See `~/.codex/get-shit-done/references/tdd.md` for TDD plan structure.
 
 **Checkpoints:** Visual/functional verification → checkpoint:human-verify. Implementation choices → checkpoint:decision. Manual action (email, 2FA) → checkpoint:human-action (rare).
 
 **Critical:** If external resource has CLI/API (Vercel, Stripe, etc.), use type="auto" to automate. Only checkpoint for verification AFTER automation.
 
-See ~/.claude/get-shit-done/references/checkpoints.md for checkpoint structure.
+See ~/.codex/get-shit-done/references/checkpoints.md for checkpoint structure.
 </step>
 
 <step name="parallelization_aware">
@@ -390,7 +390,7 @@ For quick depth:
 
 **Autonomous optimization:** No checkpoints → subagent (fresh context). Has checkpoints → main context. Group autonomous work together.
 
-See ~/.claude/get-shit-done/references/scope-estimation.md for complete guidance.
+See ~/.codex/get-shit-done/references/scope-estimation.md for complete guidance.
 </step>
 
 <step name="confirm_breakdown">
@@ -420,7 +420,7 @@ Wait for confirmation. If "adjust": revise. If "start over": return to gather_ph
 </step>
 
 <step name="write_phase_prompt">
-Use template from `~/.claude/get-shit-done/templates/phase-prompt.md`.
+Use template from `~/.codex/get-shit-done/templates/phase-prompt.md`.
 
 **Single plan:** Write to `.planning/phases/XX-name/{phase}-01-PLAN.md`
 
@@ -559,7 +559,7 @@ Phase {X} planned: {N} plan(s) created in .planning/phases/XX-name/
 
 If you can't specify Files + Action + Verify + Done, the task is too vague.
 
-**TDD candidates get dedicated plans.** If "Create price calculator with discount rules" warrants TDD, create a TDD plan for it. See `~/.claude/get-shit-done/references/tdd.md` for TDD plan structure.
+**TDD candidates get dedicated plans.** If "Create price calculator with discount rules" warrants TDD, create a TDD plan for it. See `~/.codex/get-shit-done/references/tdd.md` for TDD plan structure.
 </task_quality>
 
 <anti_patterns>
@@ -567,7 +567,7 @@ If you can't specify Files + Action + Verify + Done, the task is too vague.
 - No team assignments
 - No acceptance criteria committees
 - No sub-sub-sub tasks
-Tasks are instructions for Claude, not Jira tickets.
+Tasks are instructions for Codex, not Jira tickets.
 </anti_patterns>
 
 <success_criteria>

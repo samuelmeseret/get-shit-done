@@ -11,7 +11,7 @@ requires:
 provides:
   - execute-phase.md workflow for parallel phase execution
   - Dependency analysis with topological sort wave calculation
-  - Parallel agent spawning with Task tool
+  - Parallel agent spawning with subagent
   - Orchestrator commit handling with merge conflict detection
 affects: [10-03, 10-04, execute-phase]
 
@@ -31,7 +31,7 @@ key-decisions:
 
 patterns-established:
   - "Parallel agent spawn prompt with PARALLEL_AGENT_COMPLETE report format"
-  - "TaskOutput polling loop for monitoring"
+  - "check agent status polling loop for monitoring"
   - "check_and_spawn_dependents for wave progression"
 
 issues-created: []
@@ -43,7 +43,7 @@ completed: 2026-01-12
 
 # Phase 10 Plan 02: Create Parallel Execution Workflow Summary
 
-**Created execute-phase.md workflow with 9 steps for intelligent parallelization: dependency analysis, wave calculation, parallel agent spawning via Task tool, and orchestrator commit handling**
+**Created execute-phase.md workflow with 9 steps for intelligent parallelization: dependency analysis, wave calculation, parallel agent spawning via subagent, and orchestrator commit handling**
 
 ## Performance
 
@@ -57,8 +57,8 @@ completed: 2026-01-12
 - Created 956-line execute-phase.md workflow with complete parallel execution logic
 - Implemented dependency analysis with frontmatter + `<files>` extraction and topological sort
 - Built wave-based execution model (Wave 1 parallel, Wave 2+ waits for dependencies)
-- Added parallel agent spawning with Task tool run_in_background, XML prompt format
-- Implemented monitor_parallel_completion with TaskOutput polling and dependent spawning
+- Added parallel agent spawning with subagent run_in_background, XML prompt format
+- Implemented monitor_parallel_completion with check agent status polling and dependent spawning
 - Added orchestrator_commit with merge conflict detection failsafe
 
 ## Task Commits

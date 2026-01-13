@@ -49,7 +49,7 @@ Continue to intake_gate.
 </step>
 
 <step name="intake_gate">
-**CRITICAL: ALL questions use AskUserQuestion. Never ask inline text questions.**
+**CRITICAL: ALL questions use prompt user. Never ask inline text questions.**
 
 The primary question is: **What do you want to build/add/fix?**
 
@@ -62,14 +62,14 @@ Check for inputs:
 
 **1. Open:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Next"
 - question: "What do you want to add, improve, or fix in this milestone?"
 - options: [Deferred issues from STATE.md if any] + ["New features", "Improvements to existing", "Bug fixes", "Let me describe"]
 
 **2. Explore features:**
 
-Based on their response, use AskUserQuestion:
+Based on their response, use prompt user:
 
 If they named specific features:
 - header: "Feature Details"
@@ -88,7 +88,7 @@ If they're not sure:
 
 **3. Prioritize:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Priority"
 - question: "Which of these matters most?"
 - options: [Features they mentioned + "All equally important" + "Let me prioritize"]
@@ -109,7 +109,7 @@ Based on what you described:
 
 **4. Decision gate:**
 
-Use AskUserQuestion:
+Use prompt user:
 - header: "Ready?"
 - question: "Ready to create the milestone, or explore more?"
 - options (ALL THREE REQUIRED):
@@ -127,7 +127,7 @@ Write milestone context to file for handoff.
 
 **File:** `.planning/MILESTONE-CONTEXT.md`
 
-Use template from ~/.claude/get-shit-done/templates/milestone-context.md
+Use template from ~/.codex/get-shit-done/templates/milestone-context.md
 
 Populate with:
 - Features identified during discussion

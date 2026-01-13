@@ -9,10 +9,10 @@ allowed-tools:
   - Bash
   - Glob
   - Grep
-  - Task
-  - TaskOutput
-  - AskUserQuestion
-  - SlashCommand
+  - shell
+  - shell
+  - user_input
+  - commands
 ---
 
 <objective>
@@ -21,7 +21,7 @@ Execute all unexecuted plans in a phase with parallel agent spawning.
 Analyzes plan dependencies to identify independent plans that can run concurrently.
 Spawns background agents for parallel execution, each agent commits its own tasks atomically.
 
-**Critical constraint:** One subagent per plan, always. This is for context isolation, not parallelization. Even strictly sequential plans spawn separate subagents so each starts with fresh 200k context at 0%.
+**Critical constraint:** One subagent per plan, always. This is for context isolation, not parallelization. Even strictly sequential plans spawn separate subagents so each starts with fresh full context at 0%.
 
 Use this command when:
 - Phase has 2+ unexecuted plans
@@ -30,11 +30,11 @@ Use this command when:
 </objective>
 
 <execution_context>
-@~/.claude/get-shit-done/workflows/execute-plan.md
-@~/.claude/get-shit-done/workflows/execute-phase.md
-@~/.claude/get-shit-done/templates/summary.md
-@~/.claude/get-shit-done/references/checkpoints.md
-@~/.claude/get-shit-done/references/tdd.md
+@~/.codex/get-shit-done/workflows/execute-plan.md
+@~/.codex/get-shit-done/workflows/execute-phase.md
+@~/.codex/get-shit-done/templates/summary.md
+@~/.codex/get-shit-done/references/checkpoints.md
+@~/.codex/get-shit-done/references/tdd.md
 </execution_context>
 
 <context>

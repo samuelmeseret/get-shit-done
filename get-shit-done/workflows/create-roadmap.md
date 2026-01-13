@@ -6,8 +6,8 @@ that delivers value. The roadmap provides structure, not detailed tasks.
 <required_reading>
 **Read these files NOW:**
 
-1. ~/.claude/get-shit-done/templates/roadmap.md
-2. ~/.claude/get-shit-done/templates/state.md
+1. ~/.codex/get-shit-done/templates/roadmap.md
+2. ~/.codex/get-shit-done/templates/state.md
 3. Read `.planning/PROJECT.md` if it exists
    </required_reading>
 
@@ -32,7 +32,7 @@ If proceeding without brief, gather quick context:
 Scan for available domain expertise:
 
 ```bash
-ls ~/.claude/skills/expertise/ 2>/dev/null
+ls ~/.codex/skills/expertise/ 2>/dev/null
 ```
 
 **Inference:** Based on the brief/user request, infer applicable domains:
@@ -45,7 +45,7 @@ ls ~/.claude/skills/expertise/ 2>/dev/null
 | "MIDI", "sequencer", "music app"         | expertise/midi           |
 | "ISF", "shader", "GLSL", "visual effect" | expertise/isf-shaders    |
 | "UI", "design", "frontend", "Tailwind"   | expertise/ui-design      |
-| "Agent SDK", "Claude SDK", "agentic"     | expertise/with-agent-sdk |
+| "Agent SDK", "Codex SDK", "agentic"     | expertise/with-agent-sdk |
 
 **If domain inferred:**
 
@@ -175,7 +175,7 @@ Scan the brief and phase descriptions for research triggers:
 | "real-time", "websocket", "sync", "live updates"      | Architectural decision                  |
 | "deploy", "Vercel", "Railway", "hosting"              | If first deployment - config patterns   |
 | "choose between", "select", "evaluate", "which"       | Explicit decision needed                |
-| "AI", "OpenAI", "Claude", "LLM", "embeddings"         | Fast-moving APIs - need current docs    |
+| "AI", "OpenAI", "Codex", "LLM", "embeddings"         | Fast-moving APIs - need current docs    |
 | Any technology not already in codebase                | New integration                         |
 | Explicit questions in brief                           | Unknowns flagged by user                |
 
@@ -271,7 +271,7 @@ Proceed directly to create_structure step.
 </if>
 
 <if mode="interactive" OR="missing OR custom with gates.confirm_roadmap true">
-Use AskUserQuestion:
+Use prompt user:
 
 - header: "Ready"
 - question: "Ready to create the roadmap, or would you like me to ask more questions?"
@@ -290,7 +290,7 @@ mkdir -p .planning/phases
 </step>
 
 <step name="write_roadmap">
-Use template from `~/.claude/get-shit-done/templates/roadmap.md`.
+Use template from `~/.codex/get-shit-done/templates/roadmap.md`.
 
 Initial roadmaps use integer phases (1, 2, 3...).
 Decimal phases added later via /gsd:insert-phase command (if it exists).
@@ -319,7 +319,7 @@ mkdir -p .planning/phases/02-{phase-name}
 
 Create STATE.md — the project's living memory.
 
-Use template from `~/.claude/get-shit-done/templates/state.md`.
+Use template from `~/.codex/get-shit-done/templates/state.md`.
 
 Write to `.planning/STATE.md`:
 
@@ -386,7 +386,7 @@ Resume file: None
 **Key points:**
 
 - Project Reference points to PROJECT.md for full context
-- Claude reads PROJECT.md directly for requirements, constraints, decisions
+- Codex reads PROJECT.md directly for requirements, constraints, decisions
 - This file will be read first in every future operation
 - This file will be updated after every execution
 

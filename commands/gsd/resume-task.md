@@ -7,12 +7,12 @@ allowed-tools:
   - Write
   - Edit
   - Bash
-  - Task
-  - AskUserQuestion
+  - shell
+  - user_input
 ---
 
 <objective>
-Resume an interrupted subagent execution using the Task tool's resume parameter.
+Resume an interrupted subagent execution using the subagent's resume parameter.
 
 When a session ends mid-execution, subagents may be left in an incomplete state. This command allows users to continue that work without starting over.
 
@@ -20,7 +20,7 @@ Uses the agent ID tracking infrastructure from execute-plan to identify and resu
 </objective>
 
 <execution_context>
-@~/.claude/get-shit-done/workflows/resume-task.md
+@~/.codex/get-shit-done/workflows/resume-task.md
 </execution_context>
 
 <context>
@@ -41,7 +41,7 @@ Agent ID: $ARGUMENTS (optional - defaults to most recent)
 4. Check for file conflicts since spawn
 5. Follow resume-task.md workflow:
    - Update agent status to "interrupted"
-   - Resume via Task tool resume parameter
+   - Resume via subagent resume parameter
    - Update history on completion
    - Clear current-agent-id.txt
 </process>
@@ -80,7 +80,7 @@ Check `.planning/agent-history.json` for entries with status "spawned" or "inter
 </error_handling>
 
 <success_criteria>
-- [ ] Agent resumed via Task tool resume parameter
+- [ ] Agent resumed via subagent resume parameter
 - [ ] Agent-history.json updated with completion
 - [ ] current-agent-id.txt cleared
 - [ ] User informed of result
